@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peticion de datos Usando AJAX</title>
+    <link rel="stylesheet" href="/practica4.css">
+</head>
+<body>
+    <header>
+        <h1>Peticion de datos Usando AJAX</h1>
+    </header>
+    <nav id="menu">
+        <ul class="menu_list">
+            <li class="list_item"><a href="/practica4.html" class="link">INICIO</a></li>
+        </ul>
+    </nav>
+    <Section>
+        <center>
+            <button id="btnCargar">Cargar Informacion</button> 
+        </center>
+       
+        <div id="respuesta"> </div>
+    </Section>
+
+    <footer><p>Todos los Derechos Reservados@Issac Puga</p></footer>
+    
+
+</body>
+<script>
+    function ajax_cargar_datos(){
+
+        const http = new XMLHttpRequest;
+        const url = "https://jsonplaceholder.typicode.com/photos"
+        http.onreadystatechange = function(){
+            //validar la respuesta
+
+            if(this.status==200 && this.readyState == 4){
+
+                console.log(this.responseText);
+                let res = document.getElementById("respuesta");
+                res.innerHTML="";
+
+                //convertir en formato JSON para hacer objetos
+
+                const json = JSON.parse(this.responseText);
+
+                for(const datos of json){
+                    if(datos.albumId==1 && datos.id<6){
+                        res.innerHTML += "<br><br><div class='registro'>"+"<h1>ID: "+datos.id + "</h1> TITULO: "+datos.title + "<br><img src=" + datos.url + "><h3></div>";
+                    }      
+                }
+            }  
+        }
+        http.open('GET',url,true)
+        http.send();
+    }
+
+    document.getElementById("btnCargar").addEventListener("click",function(){
+        ajax_cargar_datos();
+    });
+
+</script>
+</html>
