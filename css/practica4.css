@@ -66,6 +66,17 @@ section button{
     margin-top: 50px;
     display: flex;
     
+    
+}
+
+.registro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 41px;
+    justify-content: center;
+    font-family: sans-serif;
+
 }
 
 img{

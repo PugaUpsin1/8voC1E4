@@ -25,7 +25,7 @@
     </Section>
 
     <footer><p>Todos los Derechos Reservados@Issac Puga</p></footer>
-    
+   
 
 </body>
 <script>
@@ -48,7 +48,7 @@
 
                 for(const datos of json){
                     if(datos.albumId==1 && datos.id<6){
-                        res.innerHTML += "<br><br><div class='registro'>"+"<h1>ID: "+datos.id + "</h1> TITULO: "+datos.title + "<br><img src=" + datos.url + "><h3></div>";
+                        res.innerHTML += "<br><br><div class='registro'>"+"<h1>ID: "+datos.id + "</h1> TITULO:<br>"+datos.title + "<br> <a href='"+ datos.url +"'><img src=" + datos.url + "></a><h3></div>";
                     }      
                 }
             }  
